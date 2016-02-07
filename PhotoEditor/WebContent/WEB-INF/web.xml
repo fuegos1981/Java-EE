@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>PhotoEditor</display-name>
+  
+	<servlet>
+        <servlet-name>MainServlet</servlet-name>
+        <servlet-class>ua.fuego_2000.MainServlet</servlet-class>
+        <multipart-config>
+        	<max-file-size>10485760000</max-file-size>
+        	<max-request-size>20971520</max-request-size>
+        	<file-size-threshold>5242880</file-size-threshold>
+    	</multipart-config>
+	</servlet>
+ 
+    <servlet-mapping>
+        <servlet-name>MainServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
