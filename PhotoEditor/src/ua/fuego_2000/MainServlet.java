@@ -48,18 +48,16 @@ public class MainServlet extends HttpServlet {
 		//out.println(result.toString());
 		File[] fList =new File(getServletContext().getRealPath("/WEB-INF/images")).listFiles();
 		for (int i = 0; i < fList.length; i++) {
-			result.append("<img src="+fList[i].getPath()+">");
+			result.append("<img src='"+fList[i].getPath()+"'>");
 			//out.println( "<img src="+fList[i].getPath()+">");
 		}
 		//out.flush();
-		req.setAttribute("textA", result.toString());
+		//req.setAttribute("textA", result.toString());
+		req.setAttribute("list", fList);
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/Index.jsp");
         dispatcher.forward(req, resp);
 		
 	}
 	
-
-
-
 
 }
