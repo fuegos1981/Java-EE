@@ -35,7 +35,7 @@ public class UserController {
 		user.setFirstName(firstName);
 		user.setAge(Integer.parseInt(age));
 		user.setLastName(lastName);
-		//user.setRole(role);
+		user.setRole(getRoleFromString(role));
 		user.setEmail(email);
 		userDao.update(user);
 		List<User> list = (List<User>) userDao.getAll();
@@ -64,23 +64,27 @@ public class UserController {
 			user.setLastName(lastName);
 			user.setAge(age);
 			user.setEmail(email);
-			if (role == "user"){
-				user.setRole(Role.USER);
-			}
-			else if (role == "admin"){
-				user.setRole(Role.ADMIN);
-			}
-			else if (role == "Super admin"){
-				user.setRole(Role.SUPER_ADMIN);
-			}
+			user.setRole(getRoleFromString(role));
 		
-			
 			userDao.create(user);
 			List<User> list = (List<User>) userDao.getAll();
 			model.addAttribute("list",list);
 			return "userList";
 
 }
+	public static Role getRoleFromString(String  roleString) {
+		if (roleString == "user"){
+			return Role.USER;
+		}
+		else if (roleString == "admin"){
+			return Role.ADMIN;
+		}
+		else if (roleString == "Super admin"){
+			return Role.SUPER_ADMIN;
+		}
+		return Role.USER;
+				
+	}	
 		
 
 }
