@@ -10,6 +10,7 @@
 <form action="/addUser" method="post">
 	First name : <input type="text" name="firstName">
 	Last name : <input type="text" name="lastName">
+	email : <input type="text" name="email">
 	Age : <input type="text" name="age">
 	Role : <select name = "role">
 				<option>user</option>

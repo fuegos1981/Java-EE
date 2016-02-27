@@ -1,16 +1,20 @@
 package oracle.academy;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import oracle.academy.model.User;
 
 
 
 public class UserDaoImp implements UserDao {
-	Map<Long, User> userMap = new HashMap<Long, User>();
+	
+	private Map<Long, User> userMap = new HashMap<Long, User>();
 	
 	public UserDaoImp() {
 		super();
@@ -18,18 +22,25 @@ public class UserDaoImp implements UserDao {
 
 	@Override
 	public User create(User user) {
-		// TODO Auto-generated method stub
+		if (userMap.isEmpty()==true){
+			user.setId((long) 0);
+			userMap.put((long) 0, user);
+			return user;
+		}
+		else
+		{
 		Set<Long> setId = userMap.keySet();
 		long maxId =(long) Collections.max(setId); 
 		user.setId(maxId+1);
 		userMap.put(user.getId(), user);
 		return user;
+		}
 	}
 
 	@Override
 	public List<User> getAll() {
 		// TODO Auto-generated method stub
-		List<User> list = (List<User>) userMap.values();
+		List<User> list = new ArrayList<User>(userMap.values());
 		return list;
 	}
 
