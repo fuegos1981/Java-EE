@@ -1,0 +1,92 @@
+@CHARSET "UTF-8";
+
+* {
+    margin:0;
+    padding:0;
+}
+body {
+    background-color: #d3f8fe;
+    padding: 8px;
+    font-family: Arial;
+    font-size: 16px;
+  
+}
+h1, h2{
+	text-align: center;
+	margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    
+}
+
+
+.register{
+	width: 400px;
+	padding: 20px;
+	background-color: blue;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 8px;
+	
+	
+}
+p, tr, td{
+	padding: 10px;
+}
+
+.regBtn{
+	height: 25px;
+	width: 200px;
+
+}
+.myNav{
+	padding-top: 30px;
+	position: relative;
+	float: none;
+	text-align: center;
+	padding-bottom: 8px;
+	
+}
+ul{
+	list-style: none;
+	background-color: #d3f8fe;
+}
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menuButton{
+	border 0;
+    text-align: left;
+    background-color: #d3f8fe;
+}
+
+.mainUl> li{
+display: inline;
+background-color: #d3f8fe;
+
+}
+
+.submenu1, .submenu2{
+display: none;	
+background-color: #d3f8fe;
+}
+
+.menu1:hover .submenu1{
+	display: block;
+	position: absolute;
+	margin-left: 600px;
+	border-radius: 8px;
+	text-align: left;
+	padding: 5px;
+	}
+.menu2:hover .submenu2{
+	display: block;
+	position: absolute;
+	margin-left: 620px;
+	border-radius: 8px;
+	text-align: left;
+	padding: 5px;
+	}
