@@ -11,28 +11,27 @@ public class CacheMapImpl<KeyType, ValueType> implements CacheMap<KeyType, Value
 
 	private Map<KeyType, ValueType> map;
 	private ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor(new ThreadFactory() {
-        @Override
-            public Thread newThread(Runnable r) {
-                Thread thread = new Thread(r);
-                thread.setDaemon(true);
-                return thread;
-            }
-        });
+		@Override
+		public Thread newThread(Runnable r) {
+			Thread thread = new Thread(r);
+			thread.setDaemon(true);
+			return thread;
+		}
+	});
 
-	
 	public CacheMapImpl() {
 		map = new HashMap<>();
-	
+
 	}
 
 	private long timeout;
+
 	@Override
 	public void setTimeToLive(long timeToLive) {
 		// TODO Auto-generated method stub
 		this.timeout = timeToLive;
 		clearExpired();
-		
-		
+
 	}
 
 	@Override
@@ -44,27 +43,24 @@ public class CacheMapImpl<KeyType, ValueType> implements CacheMap<KeyType, Value
 	@Override
 	public ValueType put(KeyType key, ValueType value) {
 		// TODO Auto-generated method stub
-		
+
 		map.put(key, value);
 		return value;
 	}
 
 	@Override
 	public void clearExpired() {
-		
+
 		scheduler.scheduleWithFixedDelay(new Runnable() {
-			 
+
 			@Override
 			public void run() {
-				System.out.println("1");
+
 				clear();
 				Clock.setTime(0);
-				
-				
-			}
-			 },Clock.getTime(), getTimeToLive(), TimeUnit.MILLISECONDS);
 
-		
+			}
+		}, Clock.getTime(), getTimeToLive(), TimeUnit.MILLISECONDS);
 
 	}
 
@@ -76,7 +72,7 @@ public class CacheMapImpl<KeyType, ValueType> implements CacheMap<KeyType, Value
 	@Override
 	public boolean containsKey(Object key) {
 		return map.containsKey(key);
-		
+
 	}
 
 	@Override
@@ -91,7 +87,7 @@ public class CacheMapImpl<KeyType, ValueType> implements CacheMap<KeyType, Value
 
 	@Override
 	public boolean isEmpty() {
-	
+
 		return map.isEmpty();
 	}
 
@@ -105,6 +101,5 @@ public class CacheMapImpl<KeyType, ValueType> implements CacheMap<KeyType, Value
 
 		return map.size();
 	}
-
 
 }
