@@ -1,11 +1,10 @@
 package ua.fuego_2000;
 
-import java.util.Arrays;
 
 public class Main {
 
 	public static void main(String[] args) {
-		String str = "dfjdkfjd jdkfjdkf jdfjdf, djfdkf djfkdj! dfj dkfj djf jkdj dj dk dj kjdk fjd kd";
+		String str = "dfjdkfjd, jdkfjdkf jdfjdf, djfdkf djfkdj! dfj dkfj djf jkdj dj dk dj kjdk fjd kd";
 		ChangeWord(str);
 
 	}
@@ -15,7 +14,7 @@ public class Main {
 		StringBuilder sb = new StringBuilder();
 		int counter = 1;
 		for (int i = 0; i < ss.length; i++) {
-			boolean isSymbol = true;
+			boolean haveReplaced = true;
 			if (counter % 5 == 0 & counter % 3 == 0) 
 			{
 				sb.append("FizzBuzz");
@@ -30,30 +29,21 @@ public class Main {
 			}
 			else {
 				sb.append(ss[i]);
-				isSymbol = false;
+				haveReplaced = false;
 			}
-			
-			if (isSymbol) {
-				sb.append(addSimbol(ss[i]));
+			if (haveReplaced){
+				if (ss[i].endsWith(",")||ss[i].endsWith(".")||ss[i].endsWith("!")||ss[i].endsWith("?"))
+				{
+					sb.append(ss[i].substring(ss[i].length()-1));
+				}
 			}
 			if (i != ss.length-1) {
-					sb.append(" ");
+				sb.append(" ");
 			}
 			counter = counter+1;
 		}
 		System.out.println(sb);
 		
 	}
-
-	private static String addSimbol(String string) {
-		String[] masSimbol = {",","!","?","."};
-		String w = string.substring(string.length()-1);
-		if (Arrays.asList(masSimbol).contains(w)){
-			return w;
-		}
-		return "";
-	}
-
-	
 
 }
