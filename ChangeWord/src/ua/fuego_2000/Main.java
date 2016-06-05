@@ -15,7 +15,7 @@ public class Main {
 		StringBuilder sb = new StringBuilder();
 		int counter = 1;
 		for (int i = 0; i < ss.length; i++) {
-			boolean onlySpace = false;
+			boolean isSymbol = true;
 			if (counter % 5 == 0 & counter % 3 == 0) 
 			{
 				sb.append("FizzBuzz");
@@ -30,19 +30,16 @@ public class Main {
 			}
 			else {
 				sb.append(ss[i]);
-				onlySpace = true;
+				isSymbol = false;
 			}
-			counter = counter+1;
-			if (i == ss.length-1){
-				
-			}
-			else if (onlySpace) {
-				sb.append(" ");
-			}
-			else
-			{
+			
+			if (isSymbol) {
 				sb.append(addSimbol(ss[i]));
 			}
+			if (i != ss.length-1) {
+					sb.append(" ");
+			}
+			counter = counter+1;
 		}
 		System.out.println(sb);
 		
@@ -52,9 +49,9 @@ public class Main {
 		String[] masSimbol = {",","!","?","."};
 		String w = string.substring(string.length()-1);
 		if (Arrays.asList(masSimbol).contains(w)){
-			return w+" ";
+			return w;
 		}
-		return " ";
+		return "";
 	}
 
 	
