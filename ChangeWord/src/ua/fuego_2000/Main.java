@@ -15,34 +15,34 @@ public class Main {
 		StringBuilder sb = new StringBuilder();
 		int counter = 1;
 		for (int i = 0; i < ss.length; i++) {
-			String lastSimbol; 
-			if (i==ss.length-1){
-				lastSimbol = "";
+			boolean onlySpace = false;
+			if (counter % 5 == 0 & counter % 3 == 0) 
+			{
+				sb.append("FizzBuzz");
+				
+			}
+			else if (counter % 3 == 0){
+				sb.append("Fizz");
+			}
+			else if (counter % 5 == 0) 
+			{
+				sb.append("Buzz");
+			}
+			else {
+				sb.append(ss[i]);
+				onlySpace = true;
+			}
+			counter = counter+1;
+			if (i == ss.length-1){
+				
+			}
+			else if (onlySpace) {
+				sb.append(" ");
 			}
 			else
 			{
-				lastSimbol = " ";
+				sb.append(addSimbol(ss[i]));
 			}
-			boolean isChange = false;
-			if (counter % 3 == 0 & counter % 5 != 0){
-				sb.append("Fizz"+addSimbol(ss[i])+lastSimbol);
-				isChange = true;
-			}
-			if (counter % 5 == 0 & counter % 3 != 0) 
-			{
-				isChange = true;
-				sb.append("Buzz"+addSimbol(ss[i])+lastSimbol);
-			}
-			if (counter % 5 == 0 & counter % 3 == 0) 
-			{
-				isChange = true;
-				sb.append("FizzBuzz"+addSimbol(ss[i])+lastSimbol);
-				
-			}
-			if (isChange == false) {
-				sb.append(ss[i]+lastSimbol);
-			}
-			counter = counter+1;
 		}
 		System.out.println(sb);
 		
@@ -52,9 +52,9 @@ public class Main {
 		String[] masSimbol = {",","!","?","."};
 		String w = string.substring(string.length()-1);
 		if (Arrays.asList(masSimbol).contains(w)){
-			return w;
+			return w+" ";
 		}
-		return "";
+		return " ";
 	}
 
 	
