@@ -10,7 +10,7 @@ public class BinarySearch {
 		int last = mas.length - 1;
 		boolean stop = false;
 		int midle = (int) ((last - first) / 2);
-		do {
+		while (!stop) {
 			if (mas[first] == x) {
 				res = first;
 				stop = true;
@@ -31,7 +31,7 @@ public class BinarySearch {
 					midle = (int) ((last - first) / 2);
 				}
 			}
-		} while (!stop);
+		}
 		System.out.println(res);
 
 	}
