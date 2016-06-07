@@ -8,10 +8,10 @@ public class Main {
 
 		String s = "-2147483648";
 		String sRes;
-		boolean isMinus = false;
+		int sign = 1;
 		if (s.startsWith("-")) {
 			sRes = s.substring(1);
-			isMinus = true;
+			sign = -1;
 		} else {
 			sRes = s;
 		}
@@ -21,14 +21,8 @@ public class Main {
 			char[] ch = sRes.toCharArray();
 			int result = 0;
 			for (int i = 0; i < ch.length; i++) {
-
 				int res = (int) ch[i] - 48;
-				if (isMinus) {
-					result = (int) (result - res * Math.pow(10, ch.length - i - 1));
-				} else {
-					result = (int) (result + res * Math.pow(10, ch.length - i - 1));
-				}
-
+				result = (int) (result + sign*res * Math.pow(10, ch.length - i - 1));
 			}
 			if (!s.equals("" + result)) {
 				throw new NumberFormatException();
